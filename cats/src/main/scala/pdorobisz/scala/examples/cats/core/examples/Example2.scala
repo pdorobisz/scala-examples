@@ -36,6 +36,11 @@ object Example2 extends App {
     previous.flatMap(_ => sendEmail(address))
   }
 
+  println("\n++Sequential++")
   // If invalid email is provided than it will return Left with an error inside.
   println(Await.result(result.value, Duration.Inf))
+
+  println("\n++Parallel++")
+  val result2: EitherT[Future, ServiceError, Unit] = Traverse[List].traverse_(addresses)(sendEmail)
+  println(Await.result(result2.value, Duration.Inf))
 }

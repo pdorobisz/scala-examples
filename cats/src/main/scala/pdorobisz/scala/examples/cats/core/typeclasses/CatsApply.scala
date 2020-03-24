@@ -27,8 +27,8 @@ object CatsApply extends App {
   println(Apply[List].ap2(List(addArity2))(List(10, 20), List(1, 2)))
 
   // operator |@| enables using "apWith" instead of "apN" for function of N arguments
-  println((Option(1) |@| Option(2)).apWith(Some(addArity2)))
-
-  // "map" can be used instead of "mapN"
-  println((Option(1) |@| Option(2)).map(addArity2))
+  //  println((Option(1) |@| Option(2)).apWith(Some(addArity2)))
+  //
+  //  // "map" can be used instead of "mapN"
+  //  println((Option(1) |@| Option(2)).map(addArity2))
 }

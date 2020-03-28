@@ -38,7 +38,7 @@ object OverridingFields {
   }
 
   class C1 extends B1 {
-    override lazy val x2: String = "C.x2" // lazy val can be overridden with lazy val
+    override lazy val x2: String = "C.x2" // lazy val can be overridden only by lazy val
     println("C: " + x1 + ", " + x2)
   }
 

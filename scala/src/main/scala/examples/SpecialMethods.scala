@@ -24,7 +24,7 @@ object SpecialMethods {
 
     test match {
       // metoda unapply (do s zostanie przypisana wartosc zwrocona przez unapply w Some)
-      case Test(s) => s
+      case Test(s) => println(s)
     }
   }
 

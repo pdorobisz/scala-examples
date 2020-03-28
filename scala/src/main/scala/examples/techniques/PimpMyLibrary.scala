@@ -17,7 +17,7 @@ object PimpMyLibrary {
   /**
    * Zamiast definiowana metody wykonujacej konwersje mozna zdefiniowac klase jako implicit:
    * implicit class QuoteString(s: String) { ... }
-   * Wtedy konstruktor bedzie metoda wykonujaca konwersje. Ma to pewne ograniczenia (szczegoly w [[learning.ImplicitConversion.ImprovedString]]).
+   * Wtedy konstruktor bedzie metoda wykonujaca konwersje. Ma to pewne ograniczenia (szczegoly w [[examples.Implicits.implicitConversionDemo()]]).
    */
 
   def main(args: Array[String]) {

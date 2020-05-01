@@ -1,15 +1,15 @@
-package pdorobisz.scala.examples.cats.freemonad.free
+package pdorobisz.freemonad
 
 import cats._
 import cats.data._
 import cats.free.Free
-import pdorobisz.scala.examples.cats.freemonad.util.Util._
+import pdorobisz.freemonad.Util._
 
 import scala.language.higherKinds
 
 /**
-  * Composing different algebras.
-  */
+ * Composing different algebras.
+ */
 object FreeMonadExample3 extends App {
 
   case class Article(authorId: Int, title: String, content: String)
@@ -112,8 +112,8 @@ object FreeMonadExample3 extends App {
 
   // Program using composed algebras
   def program(userId: Int)(implicit
-    F: Followers.FollowersI[FollowersNotificationsApp],
-    N: Notifications.NotificationsI[FollowersNotificationsApp]): Free[FollowersNotificationsApp, Unit] = {
+                           F: Followers.FollowersI[FollowersNotificationsApp],
+                           N: Notifications.NotificationsI[FollowersNotificationsApp]): Free[FollowersNotificationsApp, Unit] = {
 
     import F._
     import N._
@@ -137,9 +137,9 @@ object FreeMonadExample3 extends App {
 
   // Program using composed algebras
   def program2(a: Article)(implicit
-    A: Articles.ArticlesI[ArticlesFollowersNotificationsApp],
-    F: Followers.FollowersI[ArticlesFollowersNotificationsApp],
-    N: Notifications.NotificationsI[ArticlesFollowersNotificationsApp]): Free[ArticlesFollowersNotificationsApp, Unit] = {
+                           A: Articles.ArticlesI[ArticlesFollowersNotificationsApp],
+                           F: Followers.FollowersI[ArticlesFollowersNotificationsApp],
+                           N: Notifications.NotificationsI[ArticlesFollowersNotificationsApp]): Free[ArticlesFollowersNotificationsApp, Unit] = {
 
     import A._
     import F._
@@ -154,10 +154,6 @@ object FreeMonadExample3 extends App {
       _ <- notifyOrganisations(followedOrganisations, s"article '${a.title}' published")
     } yield ()
   }
-
-  import Articles.ArticlesI._
-  import Followers.FollowersI._
-  import Notifications.NotificationsI._
 
   // Run program (not working because of some problems with implicits)
   //  val result2: Unit = program2(Article(456, "test article", "some content")).foldMap(composedInterpreter2)

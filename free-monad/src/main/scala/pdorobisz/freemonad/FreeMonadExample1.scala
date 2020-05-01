@@ -1,20 +1,23 @@
-package pdorobisz.scala.examples.cats.freemonad.free
+package pdorobisz.freemonad
 
 import java.util.UUID
 
 import cats._
-import cats.implicits._
 import cats.free.Free
-import pdorobisz.scala.examples.cats.freemonad.util.Util._
+import cats.implicits._
+import Util._
 
 import scala.collection.mutable
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
 
 /**
-  * Program is data, built from ADT. It's a recursive data structure which can grow very big but is stack safe.
-  */
+ * Free monad is something we can wrap around an arbitrary type constructor (F[_]) to construct a monad.
+ * It allows us to separate the structure of the computation (program) from its interpreter allowing different
+ * interpretations if needed.
+ * Program is data, built from ADT. It's a recursive data structure which can grow very big but is stack safe.
+ */
 object FreeMonadExample1 extends App {
 
   // Algebra definition
@@ -42,6 +45,7 @@ object FreeMonadExample1 extends App {
   // Interpreters
 
   // "~>" - natural transformation (FunctionK[F,G]) - transforms container type F[_] to G[_].
+  // F (ActionAlgebra) is the representation inside free monad, G (Id) is a monad inside which we really run the computation.
   val seqInterpreter: ActionAlgebra ~> Id = new (ActionAlgebra ~> Id) {
 
     private val store = mutable.Map.empty[UUID, Any]
@@ -80,7 +84,7 @@ object FreeMonadExample1 extends App {
     }
   }
 
-  // Program
+  // Program - operations provided by our algebra are wrapped with Free monad so we can use for-comprehension (flatMap)
 
   def program[T](uuid: UUID, value: T): ActionF[T] = for {
     _ <- write[T](uuid, value)

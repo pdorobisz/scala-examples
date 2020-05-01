@@ -1,14 +1,13 @@
-package pdorobisz.scala.examples.cats.freemonad.free
+package pdorobisz.freemonad
 
 import java.util.UUID
 
 import cats._
 import cats.free.Free
+import pdorobisz.freemonad.Util._
 
 import scala.collection.mutable
 import scala.concurrent.Future
-import pdorobisz.scala.examples.cats.freemonad.util.Util._
-
 
 object FreeMonadExample2 extends App {
 

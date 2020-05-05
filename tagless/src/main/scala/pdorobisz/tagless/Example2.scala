@@ -1,4 +1,4 @@
-package tagless.example2
+package pdorobisz.tagless
 
 import cats.implicits._
 import cats.{Id, Monad}

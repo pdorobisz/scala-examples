@@ -1,22 +1,20 @@
-package pdorobisz.scala.examples.cats.freemonad.tagless
+package pdorobisz.tagless
 
 import java.util.UUID
 
 import cats.implicits._
 import cats.{Id, Monad}
-import pdorobisz.scala.examples.cats.freemonad.util.Util._
+import pdorobisz.tagless.Util._
 
 import scala.collection.mutable
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
-import scala.language.higherKinds
 
 /**
-  * Tagless final approach doesn't requires coding additional algebraic datatypes, can be achieved using plain Scala.
-  * Program is built from functions (free: from constructors)
-  */
-object TaglessExample1 extends App {
+ * Analogous to similar example in free monad.
+ */
+object Example5 extends App {
 
   // Algebra definition
   sealed trait ActionAlgebra[F[_], T] {

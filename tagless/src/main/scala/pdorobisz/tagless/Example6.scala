@@ -1,15 +1,13 @@
-package pdorobisz.scala.examples.cats.freemonad.tagless
+package pdorobisz.tagless
 
 import cats.implicits._
 import cats.{Id, Monad}
-import pdorobisz.scala.examples.cats.freemonad.util.Util._
-
-import scala.language.higherKinds
+import pdorobisz.tagless.Util._
 
 /**
-  * Composing algebras
-  */
-object TaglessExample2 extends App {
+ * Composing algebras - analogous to similar example in free monad.
+ */
+object Example6 extends App {
 
   case class Article(authorId: Int, title: String, content: String)
 

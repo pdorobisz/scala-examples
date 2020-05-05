@@ -1,4 +1,4 @@
-package pdorobisz.scala.examples.cats.freemonad.util
+package pdorobisz.tagless
 
 object Util {
   def log(msg: String): Unit = println(s">>> $msg")

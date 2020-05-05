@@ -1,4 +1,4 @@
-package tagless.example1
+package pdorobisz.tagless
 
 import cats.Monad
 import cats.implicits._
@@ -7,11 +7,14 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 
+/**
+ * Tagless final approach doesn't requires coding additional algebraic datatypes, can be achieved using plain Scala.
+ */
 object Example1 extends App {
 
   case class User(id: Long, name: String)
 
-  // Algebra definition (our DSL). Console is a higher-kinded type as it accepts type constructor F[_], F - effect wrapper
+  // Algebra definition (our DSL). UserAlgebra is a higher-kinded type as it accepts type constructor F[_], F - effect wrapper
   trait UserAlgebra[F[_]] {
     def getUser(id: Long): F[User]
 

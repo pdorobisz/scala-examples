@@ -1,4 +1,47 @@
-# Tagless
+# Tagless final
+
+Tagless Final Encoding is a technique for embedding a DSL (Domain Specific Language). Tagless final style consists of:
+
+* Algebras - set of operations, our language
+* Interpreters - implementations of these operations
+
+How it works:
+
+* Separates description from execution
+* Encodes programs as an expressions (it's a function, not case class)
+* Uses stack instead of heap: no problems with GC, may not be stack-safe (depends on used monad)
+
+Steps to use tagless final:
+
+* Define algebra as a trait
+* Implement interpreters (trait implementation)
+* Write programs
+* Execute program using interpreter
+
+## Tagless final vs free monad
+
+* Program is an expression (tagless) vs program is data (free)
+* Programs built from functions (tagless) vs built from ADT constructors (free)
+* Tagless may not be stack-safe (depends on used monad), free is stack-safe
+* Uses stack (tagless) vs heap (free)
+* Tagless uses a generic container F[_] - it makes it difficult to use implementation-specific features (e.g. F is ZIO
+and we want to use its features) 
+* Tagless simpler to implement (pure Scala), free requires some boilerplate code
+* In tagless you can't transform program (e.g. to some lower-level algebra) before running it (possible with free monad)
+* Tagless final may be better for expressing high-level business concepts.
+
+## Links
+
+* https://gist.github.com/fsat/cbfc04efd1997302f6e5ab112314024b
+* https://gist.github.com/OlivierBlanvillain/48bb5c66dbb0557da50465809564ee80
+* https://jproyo.github.io/posts/2019-02-07-practical-tagless-final-in-scala.html
+* https://typelevel.org/blog/2017/12/27/optimizing-final-tagless.html
+* https://softwaremill.com/free-tagless-compared-how-not-to-commit-to-monad-too-early/
+* https://degoes.net/articles/tagless-horror
+* https://w.pitula.me/presentations/2020-02-krakow-sug/#/
+* https://skillsmatter.com/skillscasts/10007-free-vs-tagless-final-with-chris-birchall
+
+# Some Theory
 
 ## Expression problem (extensibility problem)
 
@@ -158,19 +201,3 @@ val executeDBQueryAsync: DBOps[Task]
 // Interpretation:
 val userOpt: Task[Option[User]] = findId1(executeDBQueryAsync)
 ```
-
-## Tagless final encoding
-
-Tagless Final Encoding is a technique for embedding a DSL (Domain Specific Language). Tagless final style consists of:
-
-* Algebras - set of operations, our language
-* Interpreters - implementations of these operations
-
-Some links:
-
-* https://gist.github.com/fsat/cbfc04efd1997302f6e5ab112314024b
-* https://gist.github.com/OlivierBlanvillain/48bb5c66dbb0557da50465809564ee80
-* https://jproyo.github.io/posts/2019-02-07-practical-tagless-final-in-scala.html
-* https://typelevel.org/blog/2017/12/27/optimizing-final-tagless.html
-* https://degoes.net/articles/tagless-horror
-* https://w.pitula.me/presentations/2020-02-krakow-sug/#/

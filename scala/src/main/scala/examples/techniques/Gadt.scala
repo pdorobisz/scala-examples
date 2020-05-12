@@ -55,8 +55,8 @@ object Gadt extends App {
 
   // return type has to be common supertype of both expressions which is AnyVal
   def evalAdt(e: AdtExpr): AnyVal = e match {
-    case IntExpr(i) => i
-    case BoolExpr(b) => b
+    case IntAdtExpr(i) => i
+    case BoolAdtExpr(b) => b
   }
 
   // now we don't know types

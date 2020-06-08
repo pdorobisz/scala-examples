@@ -1,19 +1,20 @@
 package examples.puzzles
 
 /*
-Brak listy argumentow w deklaracji metody moze zmienic
+Using parentheses when calling method without argument list can change the result.
  */
 object ApplyAndParentheses extends App {
 
-  // Poniewaz m nie ma listy argumentow to ponizszy kod oznacza wywolanie apply na wartosci zwroconej przez m.
-  // to samo co: (new A().m).apply()
+  // m has no argument list so this calls apply on value returned by m.
+  // Same as: (new A().m).apply // new A().m returns value and we call apply on it, () is not used to call m itself
   new A().m()
 
-  // Dodanie pustej listy argumentow zmienia rezultat - tutaj wywolana jest tylko metoda m
+  // If m has empty argument list semantics is different - now we're calling m method only, apply isn't called
   new B().m()
 
 
   class A {
+    // no argument list
     def m: A = {
       println("called A.m")
       this
@@ -25,6 +26,7 @@ object ApplyAndParentheses extends App {
   }
 
   class B {
+    // empty argument list
     def m(): B = {
       println("called B.m")
       this
@@ -34,4 +36,5 @@ object ApplyAndParentheses extends App {
       println("called B.apply")
     }
   }
+
 }

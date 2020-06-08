@@ -1,17 +1,17 @@
 package examples.puzzles
 
 /*
-W przypadku argumentu typu Any Scala wykonuje "auto-tupling"
+When there's argument of type Any Scala does "auto-tupling"
  */
 object AnyArgs extends App {
 
-  // pusta lista argumentow - argument typu BoxedUnit
+  // empty argument list - argument x is of type BoxedUnit
   m()
 
-  // jeden argument - argument typu Int
+  // single argument - argument x is of type Int
   m(1)
 
-  // wiele argumentow - traktowane jako Tuple
+  // multiple arguments - argument x is treated as a Tuple
   m(1, "a")
 
   def m(x: Any) = {

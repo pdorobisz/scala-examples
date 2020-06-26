@@ -28,12 +28,12 @@ object ByNameVsByValue {
     var i = 1
 
     println("----by value----")
-    byValue(i = i + 1)
+    byValue((i = i + 1))
     println(i) // wypisze 2 bo inkrementacja zostanie wywolana tylko raz, przed wywolaniem metody
 
     i = 1
     println("----by name----")
-    byName(i = i + 1)
+    byName((i = i + 1))
     println(i) // wypisze 11 bo i zostanie 10 razy inkrementowane
 
     //

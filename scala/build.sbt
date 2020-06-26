@@ -4,8 +4,8 @@ version := "1.0"
 
 organization := "pdorobisz"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.13.1"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0" % "test"
 
-libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.11.8"
+libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.13.1"

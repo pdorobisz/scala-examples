@@ -4,7 +4,7 @@ version := "1.0"
 
 organization := "pdorobisz"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.8"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0" % "test"
 

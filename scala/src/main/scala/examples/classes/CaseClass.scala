@@ -1,4 +1,4 @@
-package examples
+package examples.classes
 
 object CaseClass {
 
@@ -15,7 +15,7 @@ object CaseClass {
     println(s"$n: $a")
   }
 
-  private def inheritanceExample() = {
+  private def inheritanceExample(): Unit = {
     // case-to-case inheritance is not supported
     //    println("\n---inheritance example---")
     //    case class Employee(override val name: String, override val lastName: String, override val age: Int, position: String) extends Person(name, lastName, age)

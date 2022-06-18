@@ -1,4 +1,4 @@
-package classes
+package examples.classes
 
 /*
 `abstract override` is a modifier that has to be added to traits in certain situations. This allows implementing
